@@ -94,14 +94,16 @@ def takeallphotos(dir):
     exif = {}
 
     for i in range(0, len(foto_names)):
+
         image = Image.open(dir + foto_names[i])
+
         for tag, value in image.getexif().items():
             if tag in TAGS:
                 exif[TAGS[tag]] = value
-                # cleprint(TAGS[tag], tag ,value)
+                # print(TAGS[tag], tag ,value)
 
         if "DateTime" in exif:
-            liststuff.append(exif["DateTime"])
+            liststuff.append(exif["DateTime"].replace(" ", ":"))
         if "HostComputer" in exif:
             liststuff.append(exif["HostComputer"])
         if "Software" in exif:
