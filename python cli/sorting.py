@@ -1,40 +1,57 @@
-list_random = [1, 4, 9, 4, 5, 7, 3, 2, 5, 7, 4, 5, 3, 2, 4, 5, 4, 3, 3, 5, 5, 3, 2, 1]
-new_list = [0]
-num  = len(new_list)
-def insertionsort():
+
+def debuginsertionsort(unsortedlist):
+    sortedlist = [0]
     i = 0
     index_minimum = 404
     counter = 0
-    maximum = len(list_random)
+    maximum = len(unsortedlist)
     while counter < maximum:
         minimum = 404
-
-        print(len(list_random)) # 24
-        
-        for i in range(0, len(list_random)):
-            if list_random[i] < minimum:
+        for i in range(0, len(unsortedlist)):
+            if unsortedlist[i] < minimum:
                 print("old min: ", minimum)
-                minimum = list_random[i]
+                minimum = unsortedlist[i]
                 print("new min: ", minimum)
                 index_minimum = i
-                
                 print("yes", list_random[i])
             else:
                 print("nope", list_random[i])
-        
-        
-        print(list_random)
-        list_random.pop(index_minimum)
-        print(list_random)
-        new_list.append(minimum)
-        print("newww: ", new_list)
+        print("old list: ", unsortedlist)
+        unsortedlist.pop(index_minimum)
+        print("new list: ", unsortedlist)
+        sortedlist.append(minimum)
+        print("sorted: ", sortedlist)
         counter += 1
-        print("he: ", counter)
+    sortedlist.pop(0)
+    return sortedlist
+
+def insertionsort(unsortedlist):
+    sortedlist = [0]
+    i = 0
+    index_minimum = 404
+    counter = 0
+    maximum = len(unsortedlist)
+    while counter < maximum:
+        minimum = 404
+        for i in range(0, len(unsortedlist)):
+            if unsortedlist[i] < minimum:
+                minimum = unsortedlist[i]
+                index_minimum = i
+        unsortedlist.pop(index_minimum)
+        sortedlist.append(minimum)
+        counter += 1
+    sortedlist.pop(0)
+    return sortedlist
+
+
+
+list_random = [1, 4, 9, 4, 5, 7, 3, 2, 5, 7, 4, 5, 3, 2, 4, 5, 4, 3, 3, 5, 5, 3, 2, 1]
+new_list = [0]
+
+
         
-        print("------")
 
-
-new_list.pop(0) 
+new_list = insertionsort(list_random)
 print(new_list)
 
 
@@ -56,7 +73,10 @@ while counter > len(list):
 
 
 
-
+        # print(len(list_random)) # 24
+        
+    
+                
 
 
 """
