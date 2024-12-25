@@ -44,6 +44,8 @@ def insertionsort(unsortedlist):
     return sortedlist
 
 
+def datetoint(i,photo_list_f):
+    return int(photo_list_f[1][0].replace(":", ""))
 
 list_random = [1, 4, 9, 4, 5, 7, 3, 2, 5, 7, 4, 5, 3, 2, 4, 5, 4, 3, 3, 5, 5, 3, 2, 1]
 new_list = [0]
@@ -55,6 +57,31 @@ new_list = insertionsort(list_random)
 print(new_list)
 
 
+def debuginsertionsort(unsortedlist):
+    sortedlist = [0]
+    i = 0
+    index_minimum = 404
+    counter = 0
+    maximum = len(unsortedlist)
+    while counter < maximum:
+        minimum = 404
+        for i in range(0, len(unsortedlist)):
+            if unsortedlist[i] < minimum:
+                print("old min: ", minimum)
+                minimum = unsortedlist[i]
+                print("new min: ", minimum)
+                index_minimum = i
+                print("yes", list_random[i])
+            else:
+                print("nope", list_random[i])
+        print("old list: ", unsortedlist)
+        unsortedlist.pop(index_minimum)
+        print("new list: ", unsortedlist)
+        sortedlist.append(minimum)
+        print("sorted: ", sortedlist)
+        counter += 1
+    sortedlist.pop(0)
+    return sortedlist
 
 """
 min = 0
