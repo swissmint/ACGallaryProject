@@ -13,6 +13,9 @@ def takeallphotos(path, photo_list):
             image = Image.open(photo_list[i])
         except OSError:
             print("not good1")
+            # add os creation date
+            complete_photo_list.append(['0000:00:00:00:00:00', photo_list[i]])
+            continue
         for tag, value in image.getexif().items():
             if tag in TAGS:
                 exif[TAGS[tag]] = value
@@ -33,31 +36,28 @@ def takeallphotos(path, photo_list):
 
     return complete_photo_list
 
-path_to_photo = "/home/adminostrator/Pictures/jbig picture"
-list_photo_path = []
+path_to_photo = "/home/noname/Pictures/phone pictures"
 
-dir_list = os.listdir(path_to_photo)      
+def photoreturn(path_to_photo):
+    list_photo_path = []
+    dir_list = os.listdir(path_to_photo)      
 
-if ".jpg" in dir_list[0]:
-    for i in dir_list:
-        if ".jpg" in i: 
-            list_photo_path.append(f"{path_to_photo}/{i}")
-else:
-    for i in dir_list:
-        fotos = os.scandir(path_to_photo + "/" + i)
-        for e in fotos:
-            if ".JPG" in e.name:
-                list_photo_path.append(f"{path_to_photo}/{i}/{e.name}")
-                print(f"{path_to_photo}/{i}/{e.name}")
-            
+    if ".jpg" in dir_list[0]:
+        for i in dir_list:
+            if ".jpg" in i: 
+                list_photo_path.append(f"{path_to_photo}/{i}")
+    else:
+        for i in dir_list:
+            fotos = os.scandir(path_to_photo + "/" + i)
+            for e in fotos:
+                if ".JPG" in e.name:
+                    list_photo_path.append(f"{path_to_photo}/{i}/{e.name}")
+                    print(f"{path_to_photo}/{i}/{e.name}")
+                
 
     
-list_photo_path = takeallphotos(path_to_photo, list_photo_path)
+    return takeallphotos(path_to_photo, list_photo_path)
 
 
 
-
-
-print(list_photo_path)
-
-
+#  night core
