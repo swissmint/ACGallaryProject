@@ -94,10 +94,12 @@ def insertionsorttwo(unsortedlist):
     i = 0
     index_minimum = 40400
     counter = 0
+
     maximum = len(unsortedlist)
     while counter < maximum:
-        minimum = ["4040000000000000000000"]
+        minimum = ["40400000000000000000000000"]
         for i in range(0, len(unsortedlist)):
+
             if datetoint(unsortedlist[i][0]) < datetoint(minimum[0]):
                 minimum = unsortedlist[i]
                 index_minimum = i
